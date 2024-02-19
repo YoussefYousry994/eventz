@@ -1,24 +1,49 @@
-# README
+# Eventz - a sample Ruby on Rails app
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Development
 
-Things you may want to cover:
+Fork this repository and clone it locally. Follow [this guide](https://docs.github.com/en/get-started/quickstart/fork-a-repo) if you need help.
 
-* Ruby version
+You will need to setup postgresql and redis. You can use homebrew for installing on a mac:
+```
+brew install postgresql
+brew install redis
 
-* System dependencies
+brew services start postgresql
+brew services start redis
+```
 
-* Configuration
+Run the following commands to setup your environment:
+* `bin/rails db:create` for creating the database locally
+* `bin/rails db:migrate` for running all migrations
 
-* Database creation
+The following commands are used for development:
+* `bin/dev` will start your Rails server and all associated processes using the Procfile
+* `bin/rails c` will start your Rails console
 
-* Database initialization
+## Testing
 
-* How to run the test suite
+The test suite is written using [Minitest](https://github.com/minitest/minitest).
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+# Run the entire test suite
+bin/rails test
 
-* Deployment instructions
+# Run all model tests
+bin/rails test test/models
 
-* ...
+# Run a specific test file
+bin/rails test test/models/event_test.rb
+
+# Run the example at a specific line number in the given test file
+bin/rails test test/models/event_test.rb:4
+```
+
+## Technology stack
+
+* Ruby 3.0.1.
+* Rails 7.0.
+
+I have not added any additional gems. The goal is to keep it as vanilla Rails as possible.
+
+See the Gemfile for all dependencies and their respective versions.
